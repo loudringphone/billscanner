@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "billscanner",
-    "slug": "billscanner",
+    "slug": "grocery-helper",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "plugins": ["expo-image-picker"],
+    "plugins": [
+      "expo-image-picker"
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -22,10 +24,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bbec428b-f185-4a6e-9951-9a356075430e"
+      }
+    },
+    "owner": "loudringphone"
   }
 }
