@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-billscanner-dev-143321-authRole",
+      "UnauthRoleArn": "arn:aws:iam::943341634464:role/amplify-billscanner-dev-143321-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::943341634464:role/amplify-billscanner-dev-143321-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-billscanner-dev-143321-deployment",
+      "UnauthRoleName": "amplify-billscanner-dev-143321-unauthRole",
+      "StackName": "amplify-billscanner-dev-143321",
+      "StackId": "arn:aws:cloudformation:us-east-1:943341634464:stack/amplify-billscanner-dev-143321/e86abe10-2848-11ee-9c91-0a4c34ca3ac1",
+      "AmplifyAppId": "d6mb6la0nwpvx"
+    }
+  }
+}
