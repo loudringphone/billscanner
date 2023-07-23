@@ -14,7 +14,7 @@ class EmailScreen extends Component {
 
     this.state = {
       email: savedEmail,
-      showEmailError: false,
+      emailError: false,
     };
   }
   handleContinue = () => {
@@ -23,9 +23,9 @@ class EmailScreen extends Component {
     const { email } = this.state;
     const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
     if (!email || !emailRegex.test(email)) {
-      this.setState({ showEmailError: true });
+      this.setState({ emailError: true });
     } else {
-      this.setState({ showEmailError: false });
+      this.setState({ emailError: false });
       navigation.navigate('Password', { name, email });
     }
   };
@@ -33,9 +33,7 @@ class EmailScreen extends Component {
   render() {
 
     const { navigation, route } = this.props;
-    const { email, showEmailError } = this.state;
-    const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
-    const buttonStyle = email && emailRegex.test(email) ? styles.button : styles.disabledButton;
+    const { email, emailError } = this.state;
     const { name } = route.params;
 
     return (
@@ -44,17 +42,19 @@ class EmailScreen extends Component {
         
         <Heading style={styles.heading}>Hello { name }! What's your email address?</Heading>
         <View style={styles.inputContainer}>
-          {showEmailError && <Text style={styles.errorText}> Please enter a valid email address.</Text>}
-          <Input 
-          placeholder="Your Email"
-          value={this.state.email}
-          onChangeText={(text) => this.setState({ email: text, showEmailError: false })}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          style={styles.input}></Input>
+          {emailError && <Text style={styles.errorText}> Please enter a valid email address.</Text>}
+          <Input
+            label="email"
+            placeholder="Your Email"
+            value={this.state.email}
+            onChangeText={(text) => this.setState({ email: text, emailError: false })}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            style={styles.input}>
+          </Input>
         </View>
 
-        <Button onPress={this.handleContinue} style={buttonStyle}
+        <Button onPress={this.handleContinue} style={styles.button}
         >Continue</Button>
         <Text onPress={() => navigation.navigate('New User', { email })} style={styles.back}>Back</Text>
         </KeyboardAvoidingView>
@@ -87,11 +87,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button: {
-    width: screenWidth * 0.75,
-    alignSelf: 'center',
-  },
-  disabledButton: {
-    backgroundColor: 'grey',
     width: screenWidth * 0.75,
     alignSelf: 'center',
   },

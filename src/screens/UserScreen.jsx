@@ -8,41 +8,41 @@ const screenWidth = Dimensions.get('window').width;
 class UserScreen extends Component {
   state = {
     name: '',
-    showNameError: false,
+    nameError: false,
   };
   handleContinue = () => {
     const { navigation, route } = this.props;
     const email = route?.params?.email ?? '';
     const { name } = this.state;
     if (!name) {
-      this.setState({ showNameError: true });
+      this.setState({ nameError: true });
     } else {
-      this.setState({ showNameError: false });
+      this.setState({ nameError: false });
       navigation.navigate('Email Address', { name, email });
     }
   };
 
 
   render() {
-    const { name, showNameError } = this.state;
-    const buttonStyle = name ? styles.button : styles.disabledButton;
+    const { name, nameError } = this.state;
+    
     return (
     <SafeAreaView style={styles.container}>
 
       <KeyboardAvoidingView  behavior='padding' style={{flex: 1}}>
         <Heading style={styles.heading}>Let's get started! How should we call you?</Heading>
         <View style={styles.inputContainer}>
-        {showNameError && <Text style={styles.errorText}>Please enter your name.</Text>}
+        {nameError && <Text style={styles.errorText}>Please enter your name.</Text>}
         <Input 
           placeholder="Your name"
           value={this.state.name}
-          onChangeText={(text) => this.setState({ name: text, showNameError: false })}
+          onChangeText={(text) => this.setState({ name: text, nameError: false })}
           style={styles.input}
         >
         </Input>
         
         </View>
-        <Button onPress={this.handleContinue} style={buttonStyle}
+        <Button onPress={this.handleContinue} style={styles.button}
         >Continue</Button>
       </KeyboardAvoidingView>
     </SafeAreaView>
