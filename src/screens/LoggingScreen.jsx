@@ -5,22 +5,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const screenWidth = Dimensions.get('window').width;
 
-class UserScreen extends Component {
+class LoggingScreen extends Component {
   state = {
     name: '',
     nameError: false,
   };
-  handleContinue = () => {
-    const { navigation, route } = this.props;
-    const email = route?.params?.email ?? '';
-    const { name } = this.state;
-    if (!name) {
-      this.setState({ nameError: true });
-    } else {
-      this.setState({ nameError: false });
-      navigation.navigate('Email Address', { name, email });
-    }
-  };
+  handleSignIn = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Sign In');
+  }
+  handleSignUp = () => {
+    const { navigation } = this.props;
+    navigation.navigate('New User');
+  }
+  
 
 
   render() {
@@ -30,27 +28,22 @@ class UserScreen extends Component {
     <SafeAreaView style={styles.container}>
 
       <KeyboardAvoidingView  behavior='padding' style={{flex: 1}}>
-        <Heading style={styles.heading}>Let's get started! How should we call you?</Heading>
-        <View style={styles.inputContainer}>
-        {nameError && <Text style={styles.errorText}>Please enter your name.</Text>}
-        <Input 
-          placeholder="Your name"
-          value={this.state.name}
-          onChangeText={(text) => this.setState({ name: text, nameError: false })}
-          style={styles.input}
-        >
-        </Input>
-        
+      <View style={styles.headingContainer}>
+          <Heading style={{marginBottom: 5,}}>Welcome!</Heading>
+          <Heading>What would you like to sign?</Heading>
         </View>
-        <Button onPress={this.handleContinue} style={styles.button}
-        >Continue</Button>
+        
+        <Button onPress={this.handleSignIn} style={styles.button}
+        >IN</Button>
+        <Button onPress={this.handleSignUp} style={styles.button}
+        >UP</Button>
       </KeyboardAvoidingView>
     </SafeAreaView>
     );
   }
 }
 
-export default UserScreen;
+export default LoggingScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -60,7 +53,7 @@ const styles = StyleSheet.create({
     marginRight: '3%',
     alignSelf: 'center',
   },
-  heading: {
+  headingContainer: {
     marginBottom: 40,
   },
   inputContainer: {
@@ -73,12 +66,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button: {
-    marginTop: 50,
+    marginTop: 30,
     width: screenWidth * 0.75,
     alignSelf: 'center',
-  },
-  errorText: {
-    color: 'red',
-    marginBottom: 5,
   },
 });

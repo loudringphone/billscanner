@@ -45,7 +45,7 @@ class EmailScreen extends Component {
           {emailError && <Text style={styles.errorText}> Please enter a valid email address.</Text>}
           <Input
             label="email"
-            placeholder="Your Email"
+            placeholder="Your Email address"
             value={this.state.email}
             onChangeText={(text) => this.setState({ email: text, emailError: false })}
             keyboardType="email-address"
@@ -74,12 +74,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   heading: {
-    marginBottom: 20,
+    marginBottom: 40,
   },
   inputContainer: {
     height: 80,
     justifyContent: 'flex-end',
-    marginBottom: 40,
     width: screenWidth * 0.75,
     alignSelf: 'center',
   },
@@ -87,12 +86,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button: {
+    marginTop: 50,
     width: screenWidth * 0.75,
     alignSelf: 'center',
   },
   errorText: {
     color: 'red',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   back: {
     marginTop: 15,

@@ -3,7 +3,32 @@ import { Text, StyleSheet, KeyboardAvoidingView, Dimensions, TouchableOpacity } 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Heading, Button, Input, View } from 'native-base'
 
+import { Auth } from 'aws-amplify';
+
 const screenWidth = Dimensions.get('window').width;
+
+async function signUp(username, password, email, name) {
+  try {
+    const { user } = await Auth.signUp({
+      username,
+      password,
+      attributes: {
+        email,
+        name,
+        preferred_username: email,
+      },
+      autoSignIn: { // optional - enables auto sign in after user is confirmed
+        enabled: true,
+      }
+    });
+    console.log(user);
+    navigation.navigate('Confirm Email', { name, email });
+
+  } catch (error) {
+    console.log('error signing up:', error);
+    alert(error)
+  }
+}
 
 class PasswordScreen extends Component {
   state = {
@@ -17,11 +42,11 @@ class PasswordScreen extends Component {
     this.setState((prevState) => ({ showPassword: !prevState.showPassword }));
   };
 
-  handleContinue = () => {
+  handleContinue = async () => {
     const { navigation, route } = this.props;
     const { name, email } = route.params;
     const { password, confirmPassword } = this.state;
-    if (password.length < 6) {
+    if (password.length < 8) {
       this.setState({ passwordError: true });
     } else {
       this.setState({ passwordError: false });
@@ -31,9 +56,12 @@ class PasswordScreen extends Component {
     } else {
       this.setState({ confirmPasswordError: false });
     }
-    if (password.length >= 6 && password == confirmPassword) {
+    if (password.length >= 8 && password == confirmPassword) {
       this.setState({ passwordError: false, confirmPasswordError: false });
-      navigation.navigate('AWS', { name, email });
+      const username = email
+      // const user = await signUp(username, password, email, name)
+      navigation.navigate('Confirm Email', { name, email });
+
     }
   };
 
@@ -54,7 +82,7 @@ class PasswordScreen extends Component {
           <Heading>Please set up a password.</Heading>
         </View>
         <View style={styles.inputContainer}>
-          {passwordError && <Text style={styles.errorText}>Needs to be at least 6 characters long.</Text>}
+          {passwordError && <Text style={styles.errorText}>Needs to be at least 8 characters long and requires uppercase, lowercase, numeric, and special characters.</Text>}
           <Input 
           label="password"
           placeholder="Password"
@@ -105,10 +133,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   headingContainer: {
-    marginBottom: 20,
+    marginBottom: 40,
   },
   inputContainer: {
-    height: 80,
+    height: 70,
     justifyContent: 'flex-end',
     width: screenWidth * 0.75,
     alignSelf: 'center',
@@ -122,13 +150,13 @@ const styles = StyleSheet.create({
     bottom: 12,
   },
   button: {
-    marginTop: 40,
+    marginTop: 50,
     width: screenWidth * 0.75,
     alignSelf: 'center',
   },
   errorText: {
     color: 'red',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   back: {
     marginTop: 15,

@@ -9,7 +9,8 @@ import { useForm, Controller } from "react-hook-form"
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeStack from './src/routes/HomeStack';
-import {Amplify} from "@aws-amplify/core"
+
+import { Amplify, Auth } from 'aws-amplify';
 import awsExports from './src/aws-exports';
 Amplify.configure(awsExports);
 
