@@ -5,14 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const screenWidth = Dimensions.get('window').width;
 
-class LoggingScreen extends Component {
-  state = {
-    name: '',
-    nameError: false,
-  };
+class HomeScreen extends Component {
   handleSignIn = () => {
     const { navigation } = this.props;
-    navigation.navigate('Sign In');
+    navigation.navigate('Email Address', {name: 'visitor', login: true});
   }
   handleSignUp = () => {
     const { navigation } = this.props;
@@ -22,8 +18,6 @@ class LoggingScreen extends Component {
 
 
   render() {
-    const { name, nameError } = this.state;
-    
     return (
     <SafeAreaView style={styles.container}>
 
@@ -43,7 +37,7 @@ class LoggingScreen extends Component {
   }
 }
 
-export default LoggingScreen;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {

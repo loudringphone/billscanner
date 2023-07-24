@@ -3,8 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { View } from 'native-base'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, } from '@react-navigation/native'
-import LoggingScreen from '../screens/LoggingScreen';
-import SignInScreen from '../screens/SignInScreen';
+import HomeScreen from '../screens/HomeScreen';
 import MainScreen from '../screens/MainScreen';
 import NewUserScreen from "../screens/NewUserScreen";
 import EmailScreen from "../screens/EmailScreen";
@@ -54,8 +53,7 @@ export default function HomeStack() {
               <Stack.Screen name="Main Screen" component={MainScreen} options={{ headerShown: false }}/>
           :
             <>
-              <Stack.Screen name="Logging Screen" component={LoggingScreen} options={{ headerShown: false }}/>
-              <Stack.Screen name="Sign In" component={SignInScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Home Screen" component={HomeScreen} options={{ headerShown: false }}/>
               <Stack.Screen name="New User" component={NewUserScreen} options={{ headerShown: false }}/>
               <Stack.Screen name="Email Address" component={EmailScreen} options={{ headerShown: false }}/>
               <Stack.Screen name="Confirm Email" component={ConfirmEmailScreen} options={{ headerShown: false }}/> 

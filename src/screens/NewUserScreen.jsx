@@ -44,7 +44,7 @@ class NewUserScreen extends Component {
         </View>
         <Button onPress={() => this.handleContinue(name)} style={styles.button}
         >Continue</Button>
-        <Text onPress={() => navigation.navigate('Logging Screen')} style={styles.back}>Back</Text>
+        <Text onPress={() => navigation.navigate('Home Screen')} style={styles.back}>Back</Text>
       </KeyboardAvoidingView>
     </SafeAreaView>
     );
