@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Heading, Button, Input, View } from 'native-base'
 import { Auth } from 'aws-amplify';
 
-
 const screenWidth = Dimensions.get('window').width;
 
 async function confirmCode(username, code) {
@@ -17,19 +16,18 @@ async function confirmCode(username, code) {
     }
 }
 
-async function resendConfirmCode(username) {
+async function signIn(username, password) {
   try {
-    await Auth.resendSignUp(username);
-    console.log('code resent successfully');
-    alert('Vertification code was resent successfully.')
+    const user = await Auth.signIn(username, password);
   } catch (error) {
-    console.log('error resending code: ', error);
-    alert(error)
+    console.log('error signing in', error);
   }
 }
 
 class ConfirmEmailScreen extends Component {
   state = {
+    email: '',
+    emailError: false,
     code: '',
     codeError: false,
     resent: false,
@@ -37,8 +35,7 @@ class ConfirmEmailScreen extends Component {
   };
 
   handleConfirm = async (email, code) => {
-    const { navigation, route } = this.props;
-    const { name } = route.params;
+    const { navigation } = this.props;
     if (!code) {
       this.setState({ codeError: true });
     } else {
@@ -50,9 +47,11 @@ class ConfirmEmailScreen extends Component {
 
   countdownTimer = null;
 
-  handleResend = async (email) => {
+  handleSendCode = async (email) => {
+    const password = 'aaAA11@@'
+    const user = signIn(email, password)
+    // Auth.setupTOTP(user).then((code) => {console.log(code)})
     this.setState({ resent: true, countdown: 60 });
-    const response = resendConfirmCode(email)
   }
   componentWillUnmount() {
     clearInterval(this.countdownTimer);
@@ -80,29 +79,33 @@ class ConfirmEmailScreen extends Component {
 
   render() {
 
-    const { navigation, route } = this.props;
-    const { code, codeError, resent, countdown } = this.state;
-    const { name, email } = route.params;
+    const { navigation } = this.props;
+    const { email, emailError, code, codeError, resent, countdown } = this.state;
     const buttonStyle = resent ? styles.disabledButton : styles.resendButton;
     return (
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView  behavior='padding'>
         
-        <Heading style={styles.heading}>Please enter the code we just sent to your email address</Heading>
+       
+        <View style={styles.headingContainer}>
+            <Heading>Welcome back!</Heading>
+            <Heading>Please get a code to log in.</Heading>
+        </View>
         <View style={styles.inputContainer}>
           <Input
             label="email"
             placeholder="Your Email address"
-            value={email}
-            editable={false} 
+            value={this.state.email}
+            onChangeText={(text) => this.setState({ email: text, emailError: false })}
             keyboardType="email-address"
             autoCapitalize="none"
-            style={{fontSize: 18, color: 'grey', backgroundColor:'lightgrey'}}>
+            style={styles.input}
+            >
           </Input>
           {codeError && <Text style={styles.errorText}> Incorrect code.</Text>}
           <Input
             label="code"
-            placeholder="Confirmation code"
+            placeholder="Vertification code"
             value={this.state.code}
             onChangeText={(text) => this.setState({ code: text, codeError: false })}
             keyboardType="numeric"
@@ -113,11 +116,11 @@ class ConfirmEmailScreen extends Component {
 
         <Button onPress={() => this.handleConfirm(email, code)} style={styles.button}
         >Confirm</Button>
-        <Button onPress={() => this.handleResend(email)} style={buttonStyle}
-        ><Text style={{color: resent ? 'white' : 'teal'}}>Resend code</Text></Button>
+        <Button onPress={() => this.handleSendCode(email)} style={buttonStyle}
+        ><Text style={{color: resent ? 'white' : 'teal'}}>Get a code</Text></Button>
         {resent && <Text style={styles.resendText}> Resend code in{' '}
         <Text style={{ fontWeight: 'bold' }}>{countdown} {countdown == 1 ? 'second' : 'seconds'}</Text></Text>}
-        <Text onPress={() => navigation.navigate('Email Address', { name })} style={styles.back}>Back</Text>
+        <Text onPress={() => navigation.navigate('Logging Screen',)} style={styles.back}>Back</Text>
         </KeyboardAvoidingView>
       </SafeAreaView>
 
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
     marginRight: '3%',
     alignSelf: 'center',
   },
-  heading: {
+  headingContainer: {
     marginBottom: 40,
   },
   inputContainer: {
@@ -178,5 +181,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     color: 'grey',
     alignSelf: 'center',
+
+    
   },
 });

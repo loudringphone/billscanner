@@ -6,8 +6,6 @@ import { NativeBaseProvider } from 'native-base';
 
 import Signup from './src/components/Signup';
 import { useForm, Controller } from "react-hook-form"
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import HomeStack from './src/routes/HomeStack';
 
 import { Amplify, Auth } from 'aws-amplify';
@@ -22,7 +20,6 @@ LogBox.ignoreLogs([
 ])
 
 
-const Stack = createStackNavigator();
 
 const FirstScreenComponent = () => <View><Text>First screen</Text></View>
 
@@ -47,9 +44,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
     
       {/* <ImagePickerComponent /> */}
-      <NavigationContainer>
        <HomeStack />
-      </NavigationContainer>
     </SafeAreaView>
     </NativeBaseProvider>
   )

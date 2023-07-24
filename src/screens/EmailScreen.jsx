@@ -2,8 +2,31 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, KeyboardAvoidingView, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Heading, Button, Input, View } from 'native-base'
+import { Auth } from 'aws-amplify';
 
 const screenWidth = Dimensions.get('window').width;
+
+async function signUp(username, password, email, name) {
+  try {
+    const { user } = await Auth.signUp({
+      username,
+      password,
+      attributes: {
+        email,
+        'name': name,
+      },
+      autoSignIn: { 
+        enabled: true,
+      }
+    });
+    console.log(user);
+    return 'success'
+  } catch (error) {
+    console.log('error signing up:', error);
+    alert(error)
+    return 'fail'
+  }
+}
 
 class EmailScreen extends Component {
   constructor(props) {
@@ -17,7 +40,7 @@ class EmailScreen extends Component {
       emailError: false,
     };
   }
-  handleContinue = () => {
+  handleContinue = async () => {
     const { navigation, route } = this.props;
     const { name } = route.params;
     const { email } = this.state;
@@ -26,7 +49,12 @@ class EmailScreen extends Component {
       this.setState({ emailError: true });
     } else {
       this.setState({ emailError: false });
-      navigation.navigate('Password', { name, email });
+      const username = email
+      const password = 'aaAA11@@'
+      const response = await signUp(username, password, email, name)
+      if (response == 'success') {
+        navigation.navigate('Confirm Email', { name, email });
+      }
     }
   };
 
@@ -98,7 +126,5 @@ const styles = StyleSheet.create({
     marginTop: 15,
     color: 'grey',
     alignSelf: 'center',
-
-    
   },
 });

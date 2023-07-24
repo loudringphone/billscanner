@@ -30,6 +30,35 @@ async function signUp(username, password, email, name) {
   }
 }
 
+function generatePassword() {
+  const length = 8;
+  const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
+  const specialCharacters = '!@#$%^&*()-_=+[]{}|;:,.<>?';
+
+  const allCharacters =
+    uppercaseLetters + lowercaseLetters + digits + specialCharacters;
+
+  let password = '';
+  
+  function getRandomCharacter(characters) {
+    return characters[Math.floor(Math.random() * characters.length)];
+  }
+  // Ensure at least one character from each category
+  password += getRandomCharacter(uppercaseLetters);
+  password += getRandomCharacter(lowercaseLetters);
+  password += getRandomCharacter(digits);
+  password += getRandomCharacter(specialCharacters);
+
+  // Fill the remaining characters to reach the desired length
+  for (let i = password.length; i < length; i++) {
+    password += getRandomCharacter(allCharacters);
+  }
+
+  return password;
+}
+
 class PasswordScreen extends Component {
   state = {
     password: '',
@@ -59,6 +88,7 @@ class PasswordScreen extends Component {
     if (password.length >= 8 && password == confirmPassword) {
       this.setState({ passwordError: false, confirmPasswordError: false });
       const username = email
+      const password = generatePassword()
       // const user = await signUp(username, password, email, name)
       navigation.navigate('Confirm Email', { name, email });
 

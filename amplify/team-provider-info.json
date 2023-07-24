@@ -1,19 +1,35 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-groceryhelper-staging-93258-authRole",
-      "UnauthRoleArn": "arn:aws:iam::943341634464:role/amplify-groceryhelper-staging-93258-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::943341634464:role/amplify-groceryhelper-staging-93258-authRole",
+      "AuthRoleName": "amplify-amplifyc7b2280abecf4-staging-80403-authRole",
+      "UnauthRoleArn": "arn:aws:iam::943341634464:role/amplify-amplifyc7b2280abecf4-staging-80403-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::943341634464:role/amplify-amplifyc7b2280abecf4-staging-80403-authRole",
       "Region": "ap-southeast-2",
-      "DeploymentBucketName": "amplify-groceryhelper-staging-93258-deployment",
-      "UnauthRoleName": "amplify-groceryhelper-staging-93258-unauthRole",
-      "StackName": "amplify-groceryhelper-staging-93258",
-      "StackId": "arn:aws:cloudformation:ap-southeast-2:943341634464:stack/amplify-groceryhelper-staging-93258/bee2ee30-2872-11ee-86ef-06a27aabc048",
-      "AmplifyAppId": "d1o2dk7rv9741k"
+      "DeploymentBucketName": "amplify-amplifyc7b2280abecf4-staging-80403-deployment",
+      "UnauthRoleName": "amplify-amplifyc7b2280abecf4-staging-80403-unauthRole",
+      "StackName": "amplify-amplifyc7b2280abecf4-staging-80403",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:943341634464:stack/amplify-amplifyc7b2280abecf4-staging-80403/a7c99be0-29f8-11ee-b40a-0a46df950896",
+      "AmplifyAppId": "d1o2dk7rv9741k",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplifyc7b2280abecf4-staging-80403-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "GroceryHelper": {}
+        "GroceryHelper": {},
+        "groceryhelper56b898d3": {}
+      },
+      "function": {
+        "groceryhelper56b898d3CreateAuthChallenge": {
+          "deploymentBucketName": "amplify-amplifyc7b2280abecf4-staging-80403-deployment",
+          "s3Key": "amplify-builds/groceryhelper56b898d3CreateAuthChallenge-3771303063506b34644f-build.zip"
+        },
+        "groceryhelper56b898d3DefineAuthChallenge": {
+          "deploymentBucketName": "amplify-amplifyc7b2280abecf4-staging-80403-deployment",
+          "s3Key": "amplify-builds/groceryhelper56b898d3DefineAuthChallenge-746d475663726a646844-build.zip"
+        },
+        "groceryhelper56b898d3VerifyAuthChallengeResponse": {
+          "deploymentBucketName": "amplify-amplifyc7b2280abecf4-staging-80403-deployment",
+          "s3Key": "amplify-builds/groceryhelper56b898d3VerifyAuthChallengeResponse-386d4152622b70665565-build.zip"
+        }
       }
     }
   },
