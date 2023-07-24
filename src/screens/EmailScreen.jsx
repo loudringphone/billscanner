@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Heading, Button, Input, View } from 'native-base'
 import { Auth } from 'aws-amplify';
 import loadingGif from '../assets/images/loading.gif'
+
 const screenWidth = Dimensions.get('window').width;
 
 async function signUp(username, password, email, name) {

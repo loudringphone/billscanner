@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Entypo } from '@expo/vector-icons'
-
-export default function Button({title, onPress, icon, color}) {
+import { Ionicons } from '@expo/vector-icons';
+export default function CustomButton({title, onPress, icon, color}) {
     return(
         <TouchableOpacity onPress={onPress} style={styles.button}>
-            <Entypo name={icon} size={28} color={color ? color : 'white'}/>
+            <Ionicons name={icon} size={28} color={color ? color : 'white'}/>
             <Text style={styles.text}>{title}</Text>
         </TouchableOpacity>
     )

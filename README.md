@@ -17,3 +17,7 @@ While I initially found the transition to React Native challenging, I've come to
 Despite the initial learning curve, I was able to find a great solution: the '@react-navigation/stack' package. Learning how to navigate between screens using this package has been incredibly valuable, and it has made the navigation process much smoother for my app.
 
 I'm excited about the progress I've made so far, and I'm enjoying the journey of learning new things in React Native. It's a rewarding experience to see my skills expand, and I'm looking forward to integrating AWS authentication to provide users with an even better experience.
+
+## Day 4
+
+Today, I made progress with AWS passwordless authentication. I successfully implemented the functionality to send a verification code via email without the need for a password. Moreover, I created separate routes for users and non-users, providing distinct navigation experiences. Currently, I'm in the process of implementing the image gallery functionality, enabling users to access and choose images from their device's gallery.

@@ -4,10 +4,10 @@ import { View } from 'native-base'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, } from '@react-navigation/native'
 import HomeScreen from '../screens/HomeScreen';
-import MainScreen from '../screens/MainScreen';
 import NewUserScreen from "../screens/NewUserScreen";
 import EmailScreen from "../screens/EmailScreen";
 import ConfirmEmailScreen from '../screens/ConfirmEmailScreen';
+import MainScreen from '../screens/MainScreen';
 
 import { Auth, Hub } from 'aws-amplify';
 
@@ -50,7 +50,9 @@ export default function HomeStack() {
       <NavigationContainer>
         <Stack.Navigator>
           {user ? 
+            <>
               <Stack.Screen name="Main Screen" component={MainScreen} options={{ headerShown: false }}/>
+            </>
           :
             <>
               <Stack.Screen name="Home Screen" component={HomeScreen} options={{ headerShown: false }}/>
