@@ -13,7 +13,7 @@ async function signUp(username, password, email, name) {
       password,
       attributes: {
         email,
-        'name': name,
+        name: name,
       },
       autoSignIn: { 
         enabled: true,

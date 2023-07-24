@@ -41,14 +41,14 @@ class MainScreen extends Component {
 
       <KeyboardAvoidingView  behavior='padding' style={{flex: 1}}>
       <View style={styles.headingContainer}>
-          <Heading style={{marginBottom: 5,}}>Main</Heading>
-          <Heading>Screen</Heading>
+          <Heading style={{marginBottom: 5,}}>Grocery</Heading>
+          <Heading>Helper</Heading>
         </View>
         
         <Button onPress={this.handleSignIn} style={styles.button}
-        >IN</Button>
+        >Camera</Button>
         <Button onPress={this.handleSignUp} style={styles.button}
-        >UP</Button>
+        >Gallery</Button>
         <Text onPress={this.handleSignOut} style={styles.logout}>Sign out</Text>
       </KeyboardAvoidingView>
     </SafeAreaView>

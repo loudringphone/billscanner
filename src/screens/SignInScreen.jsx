@@ -6,21 +6,35 @@ import { Auth } from 'aws-amplify';
 
 const screenWidth = Dimensions.get('window').width;
 
-async function confirmCode(username, code) {
-    try {
-      const response = await Auth.confirmSignUp(username, code)
-      console.log(response)
-    } catch (error) {
-      console.log('error confirming sign up:', error);
-      alert(error)
-    }
-}
 
 async function signIn(username, password) {
   try {
     const user = await Auth.signIn(username, password);
   } catch (error) {
     console.log('error signing in', error);
+  }
+}
+
+// Send confirmation code to user's email
+async function forgotPassword(username) {
+  try {
+    const data = await Auth.forgotPassword(username);
+    console.log(data);
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+// Collect confirmation code and new password
+async function forgotPasswordSubmit(username, code, newPassword) {
+  try {
+    const data = await Auth.forgotPasswordSubmit(username, code, newPassword);
+    console.log(data);
+    return 'success'
+  } catch(error) {
+    console.log(error);
+    alert(error)
+    return 'fail'
   }
 }
 
@@ -34,23 +48,25 @@ class ConfirmEmailScreen extends Component {
     countdown: 0,
   };
 
-  handleConfirm = async (email, code) => {
+  handleSignIn = async (email, code) => {
     const { navigation } = this.props;
     if (!code) {
       this.setState({ codeError: true });
     } else {
       this.setState({ codeError: false });
-      const response = await confirmCode(email, code)
-    //   navigation.navigate('Password', { name, email });
+      const password = 'aaAA11@@'
+      const response = await forgotPasswordSubmit(email, code, password)
+      if (response == 'success') {
+        const user = await signIn(email, password)
+      }
     }
   };
 
   countdownTimer = null;
 
   handleSendCode = async (email) => {
-    const password = 'aaAA11@@'
-    const user = signIn(email, password)
-    // Auth.setupTOTP(user).then((code) => {console.log(code)})
+    const user = forgotPassword(email)
+    console.log(user)
     this.setState({ resent: true, countdown: 60 });
   }
   componentWillUnmount() {
@@ -114,7 +130,7 @@ class ConfirmEmailScreen extends Component {
           </Input>
         </View>
 
-        <Button onPress={() => this.handleConfirm(email, code)} style={styles.button}
+        <Button onPress={() => this.handleSignIn(email, code)} style={styles.button}
         >Confirm</Button>
         <Button onPress={() => this.handleSendCode(email)} style={buttonStyle}
         ><Text style={{color: resent ? 'white' : 'teal'}}>Get a code</Text></Button>
