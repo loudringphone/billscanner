@@ -50,7 +50,30 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "S3Trigger12cd2171": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "parameters": {
+    "AMPLIFY_function_S3Trigger12cd2171_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger12cd2171"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger12cd2171_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger12cd2171"
+        }
+      ]
+    },
     "AMPLIFY_function_groceryhelper56b898d3CreateAuthChallenge_deploymentBucketName": {
       "usedBy": [
         {
@@ -118,7 +141,17 @@
   },
   "storage": {
     "s368305370": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ],
+          "category": "function",
+          "resourceName": "S3Trigger12cd2171"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     }

@@ -21,3 +21,9 @@ I'm excited about the progress I've made so far, and I'm enjoying the journey of
 ### Day 4
 
 Today, I made progress with AWS passwordless authentication. I successfully implemented the functionality to send a verification code via email without the need for a password. Moreover, I created separate routes for users and non-users, providing distinct navigation experiences. Currently, I'm in the process of implementing the image gallery functionality, enabling users to access and choose images from their device's gallery.
+
+### Day 5
+
+Today, I've made a video to demonstrate the process of achieving passwordless sign-in via email using the "forgot password" function. Both the gallery and camera functionalities are now fully functional, providing an improved user experience.
+
+Additionally, I've acquired the skill to upload images to S3 buckets and developed a Lambda function to track user activities for better monitoring.
