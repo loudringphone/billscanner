@@ -10,7 +10,7 @@ export async function pickImage() {
         quality: 1,
       });
   
-      console.log(result.assets[0].uri);
+      console.log(result.assets[0]);
   
       if (!result.canceled) {
         return result

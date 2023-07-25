@@ -1,9 +1,13 @@
+import 'react-native-get-random-values'
 import React, { Component } from 'react';
 import { Text, StyleSheet, KeyboardAvoidingView, Dimensions, Image } from 'react-native';
 import { Heading, Button, Input, View } from 'native-base'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Auth } from 'aws-amplify';
+import { v4 as uuidv4 } from 'uuid';
 import { pickImage } from '../functions/pickImage';
+import { getCurrentDate } from '../functions/getCurrentDate';
+import { uploadImage } from '../functions/uploadImage';
 import ImageToText from '../components/ImageToText';
 import CustomButton from  '../components/CustomButton'
 const screenWidth = Dimensions.get('window').width;
@@ -15,10 +19,10 @@ async function signOut() {
       console.log('error signing out: ', error);
     }
   }
-
 class MainScreen extends Component {
   state = {
     galleryImage: null,
+    progressText: '',
   };
   handleSignOut = async () => {
     const response = await signOut()
@@ -34,10 +38,25 @@ class MainScreen extends Component {
       this.setState({ galleryImage: result });
     }
   }
+  handleUpload = async (asset) => {
+    const fileExtension = asset.uri.split('.').pop();
+    const imageName = getCurrentDate() + '-' + uuidv4() + '.' + fileExtension
+    try {
+      this.setState({ progressText: 'Uploading...' });
+      await uploadImage(asset, imageName, this.updateProgress);
+      console.log('SUCCESSSSSSSSSSSSSSSSSS')
+    } catch (error) {
+      alert(error)
+    }
+  };
   
+  updateProgress = progressText => {
+    this.setState({ progressText });
+  };
 
 
   render() {
+
     const { galleryImage } = this.state;
 
     if (!galleryImage) {
@@ -63,6 +82,7 @@ class MainScreen extends Component {
           <Image source={{ uri: galleryImage.assets[0].uri }} style={styles.image} />
           <View style={styles.imageButtons}>
             <CustomButton library='Ionicons' icon='return-down-back' title="" onPress={() => this.setState({ galleryImage: null })} />
+            <CustomButton library='Ionicons' icon='analytics' title="Analyse" onPress={() => this.handleUpload(galleryImage.assets[0])} />
             <CustomButton library='Ionicons' icon='folder' title="" onPress={() => this.handleGallery()} />
 
           </View>

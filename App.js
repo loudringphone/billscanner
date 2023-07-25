@@ -10,6 +10,7 @@ import HomeStack from './src/routes/HomeStack';
 
 import { Amplify, Auth } from 'aws-amplify';
 import awsExports from './src/aws-exports';
+
 Amplify.configure(awsExports);
 
 import { LogBox } from "react-native"
