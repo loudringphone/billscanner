@@ -8,7 +8,7 @@ import NewUserScreen from "../screens/NewUserScreen";
 import EmailScreen from "../screens/EmailScreen";
 import ConfirmEmailScreen from '../screens/ConfirmEmailScreen';
 import MainScreen from '../screens/MainScreen';
-
+import CameraScreen from '../screens/CameraScreen';
 import { Auth, Hub } from 'aws-amplify';
 
 const Stack = createStackNavigator();
@@ -52,6 +52,8 @@ export default function HomeStack() {
           {user ? 
             <>
               <Stack.Screen name="Main Screen" component={MainScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Camera" component={CameraScreen} options={{ headerShown: false }}/>
+
             </>
           :
             <>

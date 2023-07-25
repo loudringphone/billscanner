@@ -18,7 +18,7 @@ async function signOut() {
 
 class MainScreen extends Component {
   state = {
-    image: null,
+    galleryImage: null,
   };
   handleSignOut = async () => {
     const response = await signOut()
@@ -26,29 +26,27 @@ class MainScreen extends Component {
 
   handleCamera = () => {
     const { navigation } = this.props;
-    navigation.navigate('Sign In');
+    navigation.navigate('Camera');
   }
   handleGallery = async () => {
     const result = await pickImage()
     if (result) {
-      this.setState({ image: result });
+      this.setState({ galleryImage: result });
     }
   }
   
 
 
   render() {
-    const { image } = this.state;
+    const { galleryImage } = this.state;
 
-    if (!image) {
+    if (!galleryImage) {
       return (
         <SafeAreaView style={styles.container}>
           <KeyboardAvoidingView  behavior='padding' style={{flex: 1}}>
           <View style={styles.headingContainer}>
-              <Heading style={{marginBottom: 5,}}>Grocery</Heading>
-              <Heading>Helper</Heading>
+              <Heading style={{marginBottom: 5,}}>Grocery Helper</Heading>
             </View>
-            
             <Button onPress={this.handleCamera} style={styles.button}
             >Camera</Button>
             <Button onPress={this.handleGallery} style={styles.button}
@@ -57,20 +55,20 @@ class MainScreen extends Component {
           </KeyboardAvoidingView>
         </SafeAreaView>
       )
-    } else {
+    }
+    else {
       return (
         <View style={styles.imageContainer}>
-          <ImageToText image={image.assets[0].uri}/>
-          <Image source={{ uri: image.assets[0].uri }} style={styles.image} />
+          <ImageToText image={galleryImage.assets[0].uri}/>
+          <Image source={{ uri: galleryImage.assets[0].uri }} style={styles.image} />
           <View style={styles.imageButtons}>
-            <CustomButton icon='return-down-back' title="" onPress={() => this.setState({ image: null })} />
-            <CustomButton icon='folder' title="" onPress={() => this.handleGallery()} />
+            <CustomButton library='Ionicons' icon='return-down-back' title="" onPress={() => this.setState({ galleryImage: null })} />
+            <CustomButton library='Ionicons' icon='folder' title="" onPress={() => this.handleGallery()} />
 
           </View>
         </View>
       );
     }
-    
   }
 }
 
@@ -82,7 +80,7 @@ const styles = StyleSheet.create({
     marginTop: '10%',
     alignSelf: 'center',
     height: '100%',
-    width: '95%',
+    width: '90%',
   },
   headingContainer: {
     marginBottom: 40,
