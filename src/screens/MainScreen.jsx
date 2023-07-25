@@ -10,6 +10,9 @@ import { getCurrentDate } from '../functions/getCurrentDate';
 import { uploadImage } from '../functions/uploadImage';
 import ImageToText from '../components/ImageToText';
 import CustomButton from  '../components/CustomButton'
+
+import { Storage } from 'aws-amplify';
+
 const screenWidth = Dimensions.get('window').width;
 
 async function signOut() {

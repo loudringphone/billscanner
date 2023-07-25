@@ -1,10 +1,9 @@
 import { Storage } from 'aws-amplify';
-import config from "../aws-exports";
 
 export async function uploadImage(asset, imageName, updateProgress) {
   const fetchResourceFromURI = async uri => {
     const response = await fetch(uri);
-    console.log(response);
+    console.log(JSON.stringify(response));
     const blob = await response.blob();
     return blob;
   };

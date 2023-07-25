@@ -1,0 +1,16 @@
+{
+  "resourceName": "s368305370",
+  "policyUUID": "68305370",
+  "bucketName": "groceryhelperd4240a9022a446f68452eefdc52133a1",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ",
+    "CREATE_AND_UPDATE",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

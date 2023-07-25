@@ -1,15 +1,15 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-groceryhelper-staging-92003-authRole",
-      "UnauthRoleArn": "arn:aws:iam::943341634464:role/amplify-groceryhelper-staging-92003-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::943341634464:role/amplify-groceryhelper-staging-92003-authRole",
+      "AuthRoleName": "amplify-groceryhelper-staging-123451-authRole",
+      "UnauthRoleArn": "arn:aws:iam::943341634464:role/amplify-groceryhelper-staging-123451-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::943341634464:role/amplify-groceryhelper-staging-123451-authRole",
       "Region": "ap-southeast-2",
-      "DeploymentBucketName": "amplify-groceryhelper-staging-92003-deployment",
-      "UnauthRoleName": "amplify-groceryhelper-staging-92003-unauthRole",
-      "StackName": "amplify-groceryhelper-staging-92003",
-      "StackId": "arn:aws:cloudformation:ap-southeast-2:943341634464:stack/amplify-groceryhelper-staging-92003/45f5a8e0-2a03-11ee-9a01-02d1ed17bd66",
-      "AmplifyAppId": "d1xwusid47r31t"
+      "DeploymentBucketName": "amplify-groceryhelper-staging-123451-deployment",
+      "UnauthRoleName": "amplify-groceryhelper-staging-123451-unauthRole",
+      "StackName": "amplify-groceryhelper-staging-123451",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:943341634464:stack/amplify-groceryhelper-staging-123451/a6fd8ab0-2ae7-11ee-a395-06c93a0d5f06",
+      "AmplifyAppId": "d3vssl8kx99or"
     },
     "categories": {
       "auth": {
@@ -35,7 +35,11 @@
         "groceryhelper187102ce": {
           "bucketName": "amplify-groceryhelper-staging-92003-deployment",
           "region": "ap-southeast-2"
-        }
+        },
+        "s368305370": {}
+      },
+      "api": {
+        "groceryhelper": {}
       }
     }
   },

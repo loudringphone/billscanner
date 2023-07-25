@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "groceryhelper4dd16055_identitypool_4dd16055",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "grocer4dd16055",
-    "userPoolName": "groceryhelper4dd16055_userpool_4dd16055",
+    "identityPoolName": "testAuthIdentityPool",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "grocer9ab9f25f",
+    "userPoolName": "GroceryHelper",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,13 +14,17 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Your Grocery Helper verification code",
-    "emailVerificationMessage": "Your Grocery Helper verification code is {####}",
+    "emailVerificationSubject": "Grocery Helper Verification code: {####}",
+    "emailVerificationMessage": "Grocery Helper Verification code: {####}",
     "defaultPasswordPolicy": false,
-    "passwordPolicyMinLength": 6,
-    "passwordPolicyCharacters": [],
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [
+      "Requires Lowercase",
+      "Requires Numbers",
+      "Requires Symbols",
+      "Requires Uppercase"
+    ],
     "requiredAttributes": [
-      "email",
       "name"
     ],
     "aliasAttributes": [],
@@ -28,18 +32,21 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "grocer4dd16055_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "Grocer9ab9f25f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "4dd16055",
-    "resourceName": "groceryhelper4dd16055",
+    "sharedId": "9ab9f25f",
+    "resourceName": "GroceryHelper",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "manual",
+    "serviceName": "Cognito",
     "usernameAttributes": [
       "email"
     ],
-    "triggers": {},
+    "useDefault": "manual",
+    "userPoolGroups": false,
     "userPoolGroupList": [],
-    "serviceName": "Cognito",
+    "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
     "authRoleArn": {
@@ -55,15 +62,6 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": [],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "thirdPartyAuth": false,
-    "authProviders": [],
-    "hostedUI": false,
-    "parentStack": {
-      "Ref": "AWS::StackId"
-    },
-    "permissions": []
+    "dependsOn": []
   }
 }
