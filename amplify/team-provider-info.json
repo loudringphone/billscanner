@@ -30,6 +30,12 @@
           "deploymentBucketName": "amplify-amplifyc7b2280abecf4-staging-80403-deployment",
           "s3Key": "amplify-builds/groceryhelper56b898d3VerifyAuthChallengeResponse-386d4152622b70665565-build.zip"
         }
+      },
+      "storage": {
+        "groceryhelper187102ce": {
+          "bucketName": "amplify-groceryhelper-staging-92003-deployment",
+          "region": "ap-southeast-2"
+        }
       }
     }
   },

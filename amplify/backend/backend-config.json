@@ -1,22 +1,4 @@
 {
-  "api": {
-    "groceryhelper": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [],
-          "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            },
-            "authenticationType": "API_KEY"
-          }
-        }
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "AppSync"
-    }
-  },
   "auth": {
     "groceryhelper4dd16055": {
       "customAuth": false,
@@ -46,11 +28,78 @@
       "service": "Cognito"
     }
   },
+  "parameters": {
+    "AMPLIFY_function_groceryhelper56b898d3CreateAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "groceryhelper56b898d3CreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_groceryhelper56b898d3CreateAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "groceryhelper56b898d3CreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_groceryhelper56b898d3DefineAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "groceryhelper56b898d3DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_groceryhelper56b898d3DefineAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "groceryhelper56b898d3DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_groceryhelper56b898d3VerifyAuthChallengeResponse_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "groceryhelper56b898d3VerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_function_groceryhelper56b898d3VerifyAuthChallengeResponse_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "groceryhelper56b898d3VerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_storage_groceryhelper187102ce_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "groceryhelper187102ce"
+        }
+      ]
+    },
+    "AMPLIFY_storage_groceryhelper187102ce_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "groceryhelper187102ce"
+        }
+      ]
+    }
+  },
   "storage": {
-    "InvoiceStorage": {
+    "groceryhelper187102ce": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
-      "service": "S3"
+      "service": "S3",
+      "serviceType": "imported"
     }
   }
 }
