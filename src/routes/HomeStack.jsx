@@ -45,15 +45,15 @@ export default function HomeStack() {
         <ActivityIndicator />
       </View>
     )
-  }
+  } else {
+    const userEmail = user.attributes.email
     return (
       <NavigationContainer>
         <Stack.Navigator>
           {user ? 
             <>
-              <Stack.Screen name="Main Screen" component={MainScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Main Screen" component={MainScreen} initialParams={{ userEmail }} options={{ headerShown: false }}/>
               <Stack.Screen name="Camera" component={CameraScreen} options={{ headerShown: false }}/>
-
             </>
           :
             <>
@@ -66,7 +66,5 @@ export default function HomeStack() {
         </Stack.Navigator>
       </NavigationContainer>
     )
-
-
-
+  }
 }

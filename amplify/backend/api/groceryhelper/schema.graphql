@@ -4,8 +4,15 @@ input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
 type Image @model {
-  ImageId: ID!
-  ImageName: String!
-  User: String!
+  id: ID!
+  imageName: String!
+  user: String!
+  online: OnlineStatus!
+  date: AWSDateTime!
   description: String
+}
+
+enum OnlineStatus {
+  public
+  private
 }

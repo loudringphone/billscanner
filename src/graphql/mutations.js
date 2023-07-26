@@ -7,11 +7,12 @@ export const createImage = /* GraphQL */ `
     $condition: ModelImageConditionInput
   ) {
     createImage(input: $input, condition: $condition) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename
@@ -24,11 +25,12 @@ export const updateImage = /* GraphQL */ `
     $condition: ModelImageConditionInput
   ) {
     updateImage(input: $input, condition: $condition) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename
@@ -41,11 +43,12 @@ export const deleteImage = /* GraphQL */ `
     $condition: ModelImageConditionInput
   ) {
     deleteImage(input: $input, condition: $condition) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename

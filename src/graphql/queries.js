@@ -4,11 +4,12 @@
 export const getImage = /* GraphQL */ `
   query GetImage($id: ID!) {
     getImage(id: $id) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename
@@ -23,11 +24,12 @@ export const listImages = /* GraphQL */ `
   ) {
     listImages(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        ImageId
-        ImageName
-        User
-        description
         id
+        imageName
+        user
+        online
+        date
+        description
         createdAt
         updatedAt
         __typename

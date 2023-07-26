@@ -4,11 +4,12 @@
 export const onCreateImage = /* GraphQL */ `
   subscription OnCreateImage($filter: ModelSubscriptionImageFilterInput) {
     onCreateImage(filter: $filter) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename
@@ -18,11 +19,12 @@ export const onCreateImage = /* GraphQL */ `
 export const onUpdateImage = /* GraphQL */ `
   subscription OnUpdateImage($filter: ModelSubscriptionImageFilterInput) {
     onUpdateImage(filter: $filter) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename
@@ -32,11 +34,12 @@ export const onUpdateImage = /* GraphQL */ `
 export const onDeleteImage = /* GraphQL */ `
   subscription OnDeleteImage($filter: ModelSubscriptionImageFilterInput) {
     onDeleteImage(filter: $filter) {
-      ImageId
-      ImageName
-      User
-      description
       id
+      imageName
+      user
+      online
+      date
+      description
       createdAt
       updatedAt
       __typename

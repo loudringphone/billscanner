@@ -34,12 +34,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "S3Trigger12cd2171",
+            "S3Trigger3a9f894b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "S3Trigger12cd2171",
+                  "S3Trigger3a9f894b",
                   "-",
                   {
                     "Ref": "env"
@@ -62,7 +62,7 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 25,
         "Code": {
           "S3Bucket": {
@@ -80,12 +80,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "S3Trigger12cd2171LambdaRole12cd2171",
+            "S3Trigger3a9f894bLambdaRole3a9f894b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "S3Trigger12cd2171LambdaRole12cd2171",
+                  "S3Trigger3a9f894bLambdaRole3a9f894b",
                   "-",
                   {
                     "Ref": "env"
@@ -151,6 +151,17 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:UpdateItem"
+              ],
+              "Resource": "arn:aws:dynamodb:*:*:table/*"
             }
           ]
         }

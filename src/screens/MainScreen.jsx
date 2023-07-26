@@ -41,13 +41,13 @@ class MainScreen extends Component {
       this.setState({ galleryImage: result });
     }
   }
-  handleUpload = async (asset) => {
+  handleUpload = async (asset, user) => {
     const fileExtension = asset.uri.split('.').pop();
-    const imageName = getCurrentDate() + '-' + uuidv4() + '.' + fileExtension
+    const imageName = user + '/' + getCurrentDate() + '-' + uuidv4() + '.' + fileExtension
     try {
       this.setState({ progressText: 'Uploading...' });
       await uploadImage(asset, imageName, this.updateProgress);
-      console.log('SUCCESSSSSSSSSSSSSSSSSS')
+      console.log('SUCCESS: Upload to S3 bucket')
     } catch (error) {
       alert(error)
     }
@@ -59,9 +59,10 @@ class MainScreen extends Component {
 
 
   render() {
-
+    const { route } = this.props;
+    const { userEmail } = route.params;
     const { galleryImage } = this.state;
-
+    console.log(route)
     if (!galleryImage) {
       return (
         <SafeAreaView style={styles.container}>
@@ -85,7 +86,7 @@ class MainScreen extends Component {
           <Image source={{ uri: galleryImage.assets[0].uri }} style={styles.image} />
           <View style={styles.imageButtons}>
             <CustomButton library='Ionicons' icon='return-down-back' title="" onPress={() => this.setState({ galleryImage: null })} />
-            <CustomButton library='Ionicons' icon='analytics' title="Analyse" onPress={() => this.handleUpload(galleryImage.assets[0])} />
+            <CustomButton library='Ionicons' icon='analytics' title="Analyse" onPress={() => this.handleUpload(galleryImage.assets[0], userEmail)} />
             <CustomButton library='Ionicons' icon='folder' title="" onPress={() => this.handleGallery()} />
 
           </View>

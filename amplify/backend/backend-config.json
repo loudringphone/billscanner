@@ -51,26 +51,26 @@
     }
   },
   "function": {
-    "S3Trigger12cd2171": {
+    "S3Trigger3a9f894b": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "parameters": {
-    "AMPLIFY_function_S3Trigger12cd2171_deploymentBucketName": {
+    "AMPLIFY_function_S3Trigger3a9f894b_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Trigger12cd2171"
+          "resourceName": "S3Trigger3a9f894b"
         }
       ]
     },
-    "AMPLIFY_function_S3Trigger12cd2171_s3Key": {
+    "AMPLIFY_function_S3Trigger3a9f894b_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "S3Trigger12cd2171"
+          "resourceName": "S3Trigger3a9f894b"
         }
       ]
     },
@@ -122,6 +122,54 @@
         }
       ]
     },
+    "AMPLIFY_storage_Imageztaccxdfejathbksdee52ilrx4staging_arn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "Imageztaccxdfejathbksdee52ilrx4staging"
+        }
+      ]
+    },
+    "AMPLIFY_storage_Imageztaccxdfejathbksdee52ilrx4staging_partitionKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "Imageztaccxdfejathbksdee52ilrx4staging"
+        }
+      ]
+    },
+    "AMPLIFY_storage_Imageztaccxdfejathbksdee52ilrx4staging_partitionKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "Imageztaccxdfejathbksdee52ilrx4staging"
+        }
+      ]
+    },
+    "AMPLIFY_storage_Imageztaccxdfejathbksdee52ilrx4staging_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "Imageztaccxdfejathbksdee52ilrx4staging"
+        }
+      ]
+    },
+    "AMPLIFY_storage_Imageztaccxdfejathbksdee52ilrx4staging_streamArn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "Imageztaccxdfejathbksdee52ilrx4staging"
+        }
+      ]
+    },
+    "AMPLIFY_storage_Imageztaccxdfejathbksdee52ilrx4staging_tableName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "Imageztaccxdfejathbksdee52ilrx4staging"
+        }
+      ]
+    },
     "AMPLIFY_storage_groceryhelper187102ce_bucketName": {
       "usedBy": [
         {
@@ -140,6 +188,12 @@
     }
   },
   "storage": {
+    "Imageztaccxdfejathbksdee52ilrx4staging": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "serviceType": "imported"
+    },
     "s368305370": {
       "dependsOn": [
         {
@@ -149,7 +203,7 @@
             "LambdaExecutionRole"
           ],
           "category": "function",
-          "resourceName": "S3Trigger12cd2171"
+          "resourceName": "S3Trigger3a9f894b"
         }
       ],
       "providerPlugin": "awscloudformation",
