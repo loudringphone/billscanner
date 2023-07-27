@@ -46,7 +46,7 @@ export default function HomeStack() {
       </View>
     )
   } else {
-    const userEmail = user.attributes.email
+    const userEmail = user?.attributes.email
     return (
       <NavigationContainer>
         <Stack.Navigator>

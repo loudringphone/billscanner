@@ -1,7 +1,7 @@
 import 'react-native-get-random-values'
 import React, { Component } from 'react';
 import { Text, StyleSheet, KeyboardAvoidingView, Dimensions, Image } from 'react-native';
-import { Heading, Button, Input, View } from 'native-base'
+import { Heading, Button, View } from 'native-base'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Auth } from 'aws-amplify';
 import { v4 as uuidv4 } from 'uuid';
@@ -88,7 +88,6 @@ class MainScreen extends Component {
             <CustomButton library='Ionicons' icon='return-down-back' title="" onPress={() => this.setState({ galleryImage: null })} />
             <CustomButton library='Ionicons' icon='analytics' title="Analyse" onPress={() => this.handleUpload(galleryImage.assets[0], userEmail)} />
             <CustomButton library='Ionicons' icon='folder' title="" onPress={() => this.handleGallery()} />
-
           </View>
         </View>
       );

@@ -9,7 +9,6 @@ type Image @model {
   user: String!
   online: OnlineStatus!
   date: AWSDateTime!
-  description: String
 }
 
 enum OnlineStatus {

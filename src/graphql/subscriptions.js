@@ -9,7 +9,6 @@ export const onCreateImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename
@@ -24,7 +23,6 @@ export const onUpdateImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename
@@ -39,7 +37,6 @@ export const onDeleteImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename

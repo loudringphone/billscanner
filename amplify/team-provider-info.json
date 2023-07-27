@@ -32,7 +32,7 @@
         },
         "S3Trigger3a9f894b": {
           "deploymentBucketName": "amplify-groceryhelper-staging-123451-deployment",
-          "s3Key": "amplify-builds/S3Trigger3a9f894b-48766135597062776b70-build.zip"
+          "s3Key": "amplify-builds/S3Trigger3a9f894b-65644a6d39415131422b-build.zip"
         }
       },
       "storage": {

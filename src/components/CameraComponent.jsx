@@ -80,15 +80,16 @@ export default function CameraComponent({navigation}) {
           </View>
         </Camera>
       :
-      <Image source={{uri: image}} style={styles.camera}/>
+      <>
+        <View style={styles.cameraUpperButtons}>
+          <CustomButton library='Ionicons' icon='return-down-back' title="" onPress={() => handleReturn(navigation)} />
+        </View>
+        <Image source={{uri: image}} style={styles.camera}/>
+      </>
       }
       {image ?
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingHorizontal: 50
-        }}>
-         <CustomButton library='Entypo' title={'Re-take'} icon="retweet" onPress={() => {setImage(null); setImageSaved(false)}}/>
+        <View style={styles.cameraUpperButtons}>
+          <CustomButton library='Entypo' title={'Re-take'} icon="retweet" onPress={() => {setImage(null); setImageSaved(false)}}/>
          <CustomButton library='Entypo' title={imageSaved? 'Saved' : 'Save'} icon="check" color={imageSaved? 'lightgreen' : null} onPress={saveImage} />
         </View>
       :
@@ -103,12 +104,17 @@ export default function CameraComponent({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
     backgroundColor: 'black',
     justifyContent: 'center',
-    paddingButtom: 20,
   },
   camera: {
     flex: 1,
     // borderRadius: 20,
+  },
+  cameraUpperButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 50
   }
 })

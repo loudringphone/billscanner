@@ -9,7 +9,6 @@ export const getImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename
@@ -29,7 +28,6 @@ export const listImages = /* GraphQL */ `
         user
         online
         date
-        description
         createdAt
         updatedAt
         __typename

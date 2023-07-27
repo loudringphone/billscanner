@@ -12,7 +12,6 @@ export const createImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename
@@ -30,7 +29,6 @@ export const updateImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename
@@ -48,7 +46,6 @@ export const deleteImage = /* GraphQL */ `
       user
       online
       date
-      description
       createdAt
       updatedAt
       __typename

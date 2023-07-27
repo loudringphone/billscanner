@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'white',
     borderColor: 'teal',
-    borderWidth: '1',
+    borderWidth: 1,
   },
   disabledButton: {
     marginTop: 20,

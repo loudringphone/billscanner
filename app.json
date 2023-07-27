@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.loudringphone.groceryhelper"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +28,8 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "package": "com.loudringphone.groceryhelper"
     },
     "web": {
       "favicon": "./assets/favicon.png"

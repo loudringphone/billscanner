@@ -7,6 +7,18 @@ import loadingGif from '../assets/images/loading.gif'
 
 const screenWidth = Dimensions.get('window').width;
 
+async function resendConfirmationCode(username) {
+  try {
+    await Auth.resendSignUp(username);
+    console.log('code resent successfully');
+    return 'success'
+  } catch (error) {
+    console.log('error resending code: ', error);
+    alert(error)
+    return error
+  }
+}
+
 async function signUp(username, password, email, name) {
   try {
     const { user } = await Auth.signUp({
@@ -25,7 +37,7 @@ async function signUp(username, password, email, name) {
   } catch (error) {
     console.log('error signing up:', error);
     alert(error)
-    return 'fail'
+    return error
   }
 }
 
@@ -37,8 +49,7 @@ async function forgotPassword(username) {
     return 'success'
   } catch(error) {
     console.log(error);
-    alert(error)
-    return 'fail'
+    return error
   }
 }
 
@@ -67,9 +78,18 @@ class EmailScreen extends Component {
       if (login) {
         this.setState({ loading: true });
         const response = await forgotPassword(email)
-        console.log(response)
         this.setState({ loading: false });
-        navigation.navigate('Confirm Email', { name, email, login });
+        if (response == 'success') {
+          navigation.navigate('Confirm Email', { name, email, login });
+        }
+        else if (response.message.includes('there is no registered/verified email')) {
+          this.setState({ loading: true });
+          const response = await resendConfirmationCode(email)
+          this.setState({ loading: false });
+          if (response == 'success') {
+            navigation.navigate('Confirm Email', { name, email });
+          }
+        }
       }
       else {
         const username = email
@@ -79,6 +99,13 @@ class EmailScreen extends Component {
         this.setState({ loading: false });
         if (response == 'success') {
           navigation.navigate('Confirm Email', { name, email });
+        } else {
+          this.setState({ loading: true });
+          const response = await resendConfirmationCode(email)
+          this.setState({ loading: false });
+          if (response == 'success') {
+            navigation.navigate('Confirm Email', { name, email });
+          }
         }
       }
       

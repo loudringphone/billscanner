@@ -3,12 +3,12 @@ import { Text, StyleSheet } from 'react-native';
 
 export default function ImageToText({image}) {
     return(
-        <Text style={styles.rekognition}>{image}</Text>
+        <Text style={styles.text}>{image}</Text>
     )
 }
 
 const styles = StyleSheet.create({
-    rekognition: {
+    text: {
       position: 'absolute',
       top: 0,
       bottom: 0,

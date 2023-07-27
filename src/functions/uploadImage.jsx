@@ -1,6 +1,7 @@
 import { Storage } from 'aws-amplify';
 
 export async function uploadImage(asset, imageName, updateProgress) {
+  
   const fetchResourceFromURI = async uri => {
     const response = await fetch(uri);
     console.log(JSON.stringify(response));
@@ -8,7 +9,9 @@ export async function uploadImage(asset, imageName, updateProgress) {
     return blob;
   };
 
-  const img = await fetchResourceFromURI(asset.uri);
+  let uri = asset.uri
+
+  const img = await fetchResourceFromURI(uri);
   return Storage.put(imageName, img, {
     level: 'public',
     contentType: asset.type,
@@ -33,5 +36,7 @@ export async function uploadImage(asset, imageName, updateProgress) {
       updateProgress('Upload Error');
       console.log(err);
     });
+
+  
 }
    
